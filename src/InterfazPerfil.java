@@ -16,12 +16,53 @@ public class InterfazPerfil extends Herramientas {
 
         // CREAR Y AGREGAR UNA IMAGEN EN EL ENCABEZADO
         JLabel imagenEncabezadoPerfil = crearEtiqueta(); // Reemplaza con la ruta de tu imagen
-        imagenEncabezadoPerfil.setIcon(new ImageIcon("Imagenes/icono_perfil.png"));
-        imagenEncabezadoPerfil.setBounds(70, 0, 400, 250);
+        imagenEncabezadoPerfil.setIcon(new ImageIcon("Imagenes/prueba.png"));
+        imagenEncabezadoPerfil.setBounds(52, 30, 400, 250);
         panelPerfil.add(imagenEncabezadoPerfil);
 
 
+        //MOSTRAR LOS DATOS DEL PERFIL
 
+        //NOMBRE
+        JLabel nombreEtiqueta = crearEtiqueta();
+        nombreEtiqueta.setText("NOMBRE: ");
+        nombreEtiqueta.setBounds(40, 330, 100, 25);
+        panelPerfil.add(nombreEtiqueta);
+
+        //CORREO
+        JLabel correoEtiqueta = crearEtiqueta();
+        correoEtiqueta.setText("CORREO: ");
+        correoEtiqueta.setBounds(40, 380, 100, 25);
+        panelPerfil.add(correoEtiqueta);
+
+        //TELEFONO
+        JLabel telefonoEtiqueta = crearEtiqueta();
+        telefonoEtiqueta.setText("TELEFONO: ");
+        telefonoEtiqueta.setBounds(40, 430, 100, 25);
+        panelPerfil.add(telefonoEtiqueta);
+
+        //CONTRASEÑA
+        JLabel contraseniaEtiqueta = crearEtiqueta();
+        contraseniaEtiqueta.setText("CONTRASEÑA: ");
+        contraseniaEtiqueta.setBounds(40, 480, 100, 25);
+        panelPerfil.add(contraseniaEtiqueta);
+
+        //BOTÓN PARA VOLVER AL MENU PRINCIPAL
+        JButton volver = crearBotones();
+        volver.setBounds(180, 550, 120, 30);
+        volver.setText("Volver");
+        panelPerfil.add(volver);
+
+        // CREACION DEL ACTION LISTENER DEL BOTON VOLVER(VOLVER AL MENU PRINCIPAL)
+        volver.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventanaPerfil.dispose();
+
+                new InterfazPrincipal();
+
+            }
+        });
 
         // DAR VISIBILIDAD A LA VENTANA
         ventanaPerfil.setVisible(true);

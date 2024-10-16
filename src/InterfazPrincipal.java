@@ -7,11 +7,11 @@ import java.util.List;
 
 public class InterfazPrincipal extends Herramientas {
 
-    private List<String> carrito;  // Lista para almacenar los productos seleccionados
+    private List<String> carrito;
 
     // Constructor donde se construye la interfaz
     public InterfazPrincipal() {
-        carrito = new ArrayList<>();  // Inicializar el carrito
+        carrito = new ArrayList<>();
 
         // Crear ventana y panelPrincipal principal
         JFrame ventana = crearVentana();
@@ -96,8 +96,8 @@ public class InterfazPrincipal extends Herramientas {
         JLabel imagenLabel = new JLabel();
         ImageIcon imagenIcon = new ImageIcon(rutaImagen);
         Image imagen = imagenIcon.getImage();  // Obtener la imagen
-        Image imagenEscalada = imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH);  // Escalar a 100x100
-        imagenLabel.setIcon(new ImageIcon(imagenEscalada));  // Asignar la imagen escalada
+        Image imagenEscalada = imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        imagenLabel.setIcon(new ImageIcon(imagenEscalada));
         imagenLabel.setBounds(10, 10, 100, 100);  // Posición y tamaño del JLabel
         productoPanel.add(imagenLabel);
 

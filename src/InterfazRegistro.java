@@ -36,7 +36,7 @@ public class InterfazRegistro extends Herramientas {
             public void actionPerformed(ActionEvent e) {
                 if (opacity < 1f) {
                     opacity += 0.05f; // Incrementar opacidad
-                    bienvenidaEtiqueta.setForeground(new Color(0, 0, 0, (int)(opacity * 255))); // Cambiar color del texto
+                    bienvenidaEtiqueta.setForeground(new Color(0, 0, 0, (int)(opacity * 255)));
                 } else {
                     ((Timer)e.getSource()).stop(); // Detener el temporizador
                 }

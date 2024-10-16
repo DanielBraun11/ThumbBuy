@@ -64,16 +64,16 @@ public class InterfazInicio extends Herramientas {
 
         // Área de texto para la contraseña más pequeña
         JPasswordField contrasenia = new JPasswordField();
-        contrasenia.setBounds(40, 380, 180, 25);  // Ancho reducido para ajustarse mejor
+        contrasenia.setBounds(40, 380, 180, 25);
         panelInicial.add(contrasenia);
 
         // Botón cuadrado para mostrar/ocultar contraseña
         JButton verContraseniaButton = new JButton();
-        verContraseniaButton.setBounds(230, 380, 25, 25);  // Botón cuadrado y alineado
+        verContraseniaButton.setBounds(230, 380, 25, 25);
 
-        ImageIcon iconoOjo = new ImageIcon("Imagenes/ojo_vista.png");  // Ruta de tu imagen de ojo
+        ImageIcon iconoOjo = new ImageIcon("Imagenes/ojo_vista.png");
         Image imagenOjo = iconoOjo.getImage();
-        Image imagenOjoEscalada = imagenOjo.getScaledInstance(25, 25, Image.SCALE_SMOOTH);  // Escalar la imagen al tamaño del botón
+        Image imagenOjoEscalada = imagenOjo.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         verContraseniaButton.setIcon(new ImageIcon(imagenOjoEscalada));
 
         panelInicial.add(verContraseniaButton);
@@ -85,7 +85,7 @@ public class InterfazInicio extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (mostrando) {
-                    contrasenia.setEchoChar('●');  // Volver a ocultar la contraseña
+                    contrasenia.setEchoChar('●');  // Ocultar la contraseña
                 } else {
                     contrasenia.setEchoChar((char) 0);  // Mostrar la contraseña
                 }
@@ -106,8 +106,8 @@ public class InterfazInicio extends Herramientas {
 
         //ACEPTACION DE TERMINOS Y CONDICIONES
         JRadioButton terminosCheck = new JRadioButton("He leído y acepto los términos y condiciones");
-        terminosCheck.setBounds(40, 520, 300, 30); // Ajusta las coordenadas según el diseño de tu interfaz
-        terminosCheck.setBackground(Color.PINK);  // Si deseas que el fondo sea rosa, para que coincida con el tema de la interfaz
+        terminosCheck.setBounds(40, 520, 300, 30);
+        terminosCheck.setBackground(Color.PINK);
         panelInicial.add(terminosCheck);
 
 
