@@ -7,11 +7,13 @@ import java.util.List;
 
 public class InterfazPrincipal extends Herramientas {
 
+    private List<JPanel> productoPanels;  // Almacenar los paneles de productos
     private List<String> carrito;
 
     // Constructor donde se construye la interfaz
-    public InterfazPrincipal() {
+    public InterfazPrincipal(String nombre_usuario) {
         carrito = new ArrayList<>();
+        productoPanels = new ArrayList<>();
 
         // Crear ventana y panelPrincipal principal
         JFrame ventana = crearVentana();
@@ -19,11 +21,19 @@ public class InterfazPrincipal extends Herramientas {
         panelPrincipal.setLayout(null);
         panelPrincipal.setBackground(Color.PINK);  // Fondo rosa
 
-        // Agregar productos manualmente
-        panelPrincipal.add(crearProductoPanel("Camiseta del Barça", "15.99€", "Imagenes/camisetaBarca.jpeg", 10, 100));
-        panelPrincipal.add(crearProductoPanel("Camiseta del Atleti", "29.99€", "Imagenes/camisetaAtleti.jpg", 10, 250));
-        panelPrincipal.add(crearProductoPanel("Pantalón Adidas", "9.99€", "Imagenes/pantalonAdidasNegro.jpg", 10, 400));
-        panelPrincipal.add(crearProductoPanel("Zapatos Nike", "39.99€", "Imagenes/zapatillasNikeNegras.jpg", 10, 550));
+        // Agregar productos usando la clase Producto
+        Producto[] productos = {
+                new Producto("Camiseta del Barça", "15.99€", "Imagenes/camisetaBarca.jpeg"),
+                new Producto("Camiseta del Atleti", "29.99€", "Imagenes/camisetaAtleti.jpg"),
+                new Producto("Pantalón Adidas", "9.99€", "Imagenes/pantalonAdidasNegro.jpg"),
+                new Producto("Zapatos Nike", "39.99€", "Imagenes/zapatillasNikeNegras.jpg")
+        };
+
+        int yPos = 100;  // Posición Y inicial para los productos
+        for (Producto producto : productos) {
+            agregarProducto(panelPrincipal, producto, 10, yPos);
+            yPos += 150;  // Espacio entre productos
+        }
 
         // Crear un JScrollPane para manejar el desplazamiento
         JScrollPane scrollPane = new JScrollPane(panelPrincipal);
@@ -35,7 +45,7 @@ public class InterfazPrincipal extends Herramientas {
 
         // Crear botón del carrito en la esquina superior derecha
         JButton carritoButton = new JButton();
-        ImageIcon carritoIcon = new ImageIcon("Imagenes/Carrito.png");  // Cambia la ruta por la imagen de tu carrito
+        ImageIcon carritoIcon = new ImageIcon("Imagenes/Carrito.png");  // Imagen del carrito
         Image carritoImg = carritoIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         carritoButton.setIcon(new ImageIcon(carritoImg));
         carritoButton.setBounds(280, 5, 40, 40);  // Botón en la esquina superior derecha
@@ -43,23 +53,11 @@ public class InterfazPrincipal extends Herramientas {
 
         // Crear botón del perfil al lado del de carrito
         JButton perfilButton = new JButton();
-        ImageIcon perfilIcon = new ImageIcon("Imagenes/perfil_logo.jpg");  // Cambia la ruta por la imagen de tu carrito
+        ImageIcon perfilIcon = new ImageIcon("Imagenes/perfil_logo.jpg");  // Imagen del perfil
         Image perfilImg = perfilIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         perfilButton.setIcon(new ImageIcon(perfilImg));
         perfilButton.setBounds(220, 5, 40, 40);  // Botón en la esquina superior derecha
         panelPrincipal.add(perfilButton);
-
-        //BUSCADOR
-        JLabel buscadorText = crearEtiqueta();
-        buscadorText.setText("BUSCADOR: ");
-        buscadorText.setBounds(20, 40, 100, 25);
-        panelPrincipal.add(buscadorText);
-
-        // Crear area de texto para el buscador(encabezado)
-        JTextArea buscador = crearAreaTexto();
-        buscador.setBounds(20, 60, 210, 25);
-        panelPrincipal.add(buscador);
-
 
         // Acción del botón del carrito
         carritoButton.addActionListener(new ActionListener() {
@@ -79,13 +77,33 @@ public class InterfazPrincipal extends Herramientas {
             }
         });
 
+        // Buscador
+        JTextArea buscador = new JTextArea();
+        buscador.setBounds(20, 60, 210, 25);
+        panelPrincipal.add(buscador);
+
+        JButton buscarButton = new JButton("Buscar");
+        buscarButton.setBounds(230, 60, 90, 25);
+        panelPrincipal.add(buscarButton);
+
         // Agregar el JScrollPane a la ventana y hacerla visible
         ventana.add(scrollPane);
         ventana.setVisible(true);
     }
 
+
+    //---------------------------------------------------------------------------------------------
+
+
+    // Método para agregar un producto al panel y a la lista
+    private void agregarProducto(JPanel panelPrincipal, Producto producto, int x, int y) {
+        JPanel productoPanel = crearProductoPanel(producto, x, y);
+        panelPrincipal.add(productoPanel);
+        productoPanels.add(productoPanel);  // Almacenar el panel para el futuro si se necesita
+    }
+
     // Método para crear el panel de un producto con posicionamiento manual
-    private JPanel crearProductoPanel(String nombre, String precio, String rutaImagen, int x, int y) {
+    private JPanel crearProductoPanel(Producto producto, int x, int y) {
         JPanel productoPanel = new JPanel();
         productoPanel.setLayout(null);  // Para usar setBounds dentro del producto
         productoPanel.setBounds(x, y, 340, 120);  // Posicionamiento y tamaño del producto
@@ -94,7 +112,7 @@ public class InterfazPrincipal extends Herramientas {
 
         // Imagen del producto redimensionada
         JLabel imagenLabel = new JLabel();
-        ImageIcon imagenIcon = new ImageIcon(rutaImagen);
+        ImageIcon imagenIcon = new ImageIcon(producto.getRutaImagen());
         Image imagen = imagenIcon.getImage();  // Obtener la imagen
         Image imagenEscalada = imagen.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         imagenLabel.setIcon(new ImageIcon(imagenEscalada));
@@ -103,13 +121,13 @@ public class InterfazPrincipal extends Herramientas {
 
         // Etiqueta de precio
         JLabel precioLabel = crearEtiqueta();
-        precioLabel.setText(precio);
+        precioLabel.setText(producto.getPrecio());
         precioLabel.setBounds(120, 10, 100, 30);
         productoPanel.add(precioLabel);
 
         // Etiqueta de nombre
         JLabel nombreLabel = crearEtiqueta();
-        nombreLabel.setText(nombre);
+        nombreLabel.setText(producto.getNombre());
         nombreLabel.setBounds(120, 35, 170, 30);
         productoPanel.add(nombreLabel);
 
@@ -123,12 +141,10 @@ public class InterfazPrincipal extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Abrir detalles del producto
-                new DetallesProducto(nombre, precio, rutaImagen, carrito);
+                new DetallesProducto(producto.getNombre(), producto.getPrecio(), producto.getRutaImagen(), carrito);
             }
         });
 
         return productoPanel;
     }
 }
-
-

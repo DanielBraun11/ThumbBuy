@@ -133,7 +133,7 @@ public class InterfazInicio extends Herramientas {
                 } else {
                     // Si se aceptaron los términos, proceder con el inicio de sesión
                     ventanaInicio.dispose();
-                    InterfazPrincipal principal = new InterfazPrincipal();
+                    InterfazPrincipal principal = new InterfazPrincipal("");
                 }
             }
         });

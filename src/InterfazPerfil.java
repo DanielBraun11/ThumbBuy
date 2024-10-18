@@ -59,10 +59,24 @@ public class InterfazPerfil extends Herramientas {
             public void actionPerformed(ActionEvent e) {
                 ventanaPerfil.dispose();
 
-                new InterfazPrincipal();
+                new InterfazPrincipal("");
 
             }
         });
+
+        //---------------------------------------------------------------------------------
+        //OBTENER Y MOSTRAR LOS DATOS - los recojo de la clase InterfazRegistro / BBDD
+
+        //NOMBRE
+        JLabel nombreEtiquetaDato = crearEtiqueta();
+        nombreEtiquetaDato.setText("");
+        nombreEtiquetaDato.setBounds(40, 330, 100, 25);
+        panelPerfil.add(nombreEtiquetaDato);
+
+
+
+
+
 
         // DAR VISIBILIDAD A LA VENTANA
         ventanaPerfil.setVisible(true);

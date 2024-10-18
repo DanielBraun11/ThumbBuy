@@ -51,6 +51,45 @@ public class ConexionBBDD {
         return usuarioRegistrado;
     }
 
+    public void registrarUsuario(String nombre, String contrasenia, String correo, String telefono) {
+        String consultaVerificacion = "SELECT * FROM datosusuarios WHERE nombre = ?";
+        String consultaSQL = "INSERT INTO datosusuarios (nombre, contraseña, correo, telefono) VALUES (?, ?, ?, ?)";
+
+        try {
+            // Verificar si el nombre de usuario ya existe
+            preparedStatement = connection.prepareStatement(consultaVerificacion);
+            preparedStatement.setString(1, nombre);
+            ResultSet resultado = preparedStatement.executeQuery();
+
+            if (resultado.next()) {
+                System.out.println("Error: El nombre de usuario ya está en uso.");
+            } else {
+                // Si no existe, registrar al usuario
+                preparedStatement = connection.prepareStatement(consultaSQL);
+                preparedStatement.setString(1, nombre);
+                preparedStatement.setString(2, contrasenia);
+                preparedStatement.setString(3, correo);
+                preparedStatement.setString(4, telefono);
+
+                preparedStatement.executeUpdate();
+                System.out.println("Usuario registrado correctamente.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al registrar el usuario.");
+        } finally {
+            // Cerrar recursos
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
     public static void main(String[] args) {
         ConexionBBDD conexion = new ConexionBBDD();
 
