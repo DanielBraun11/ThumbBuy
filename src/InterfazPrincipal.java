@@ -41,12 +41,23 @@ public class InterfazPrincipal extends Herramientas {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         panelPrincipal.setPreferredSize(new Dimension(360, 800));
 
+        //Imagen Frame Logo
+        JLabel FrameLogo = crearEtiqueta();
+        FrameLogo.setBounds(5, 5, 240, 40);
+
+        ImageIcon iconoFrameLogo = new ImageIcon("Imagenes/Frame Logo.png");
+        Image imagenFrameLogo = iconoFrameLogo.getImage();
+        Image imagenFrameLogoEscalada = imagenFrameLogo.getScaledInstance(240, 50, Image.SCALE_SMOOTH);
+        FrameLogo.setIcon(new ImageIcon(imagenFrameLogoEscalada));
+
+        panelPrincipal.add(FrameLogo);
+
         // Crear botón del carrito en la esquina superior derecha
         JButton carritoButton = new JButton();
         ImageIcon carritoIcon = new ImageIcon("Imagenes/Carrito.png");  // Imagen del carrito
         Image carritoImg = carritoIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         carritoButton.setIcon(new ImageIcon(carritoImg));
-        carritoButton.setBounds(280, 5, 40, 40);  // Botón en la esquina superior derecha
+        carritoButton.setBounds(287, 5, 40, 40);  // Botón en la esquina superior derecha
         panelPrincipal.add(carritoButton);
 
         // Acción del botón del carrito
@@ -62,7 +73,7 @@ public class InterfazPrincipal extends Herramientas {
         ImageIcon perfilIcon = new ImageIcon("Imagenes/perfil_logo.jpg");  // Imagen del perfil
         Image perfilImg = perfilIcon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         perfilButton.setIcon(new ImageIcon(perfilImg));
-        perfilButton.setBounds(220, 5, 40, 40);  // Botón en la esquina superior derecha
+        perfilButton.setBounds(245, 5, 40, 40);  // Botón en la esquina superior derecha
         panelPrincipal.add(perfilButton);
 
         perfilButton.addActionListener(new ActionListener() {
