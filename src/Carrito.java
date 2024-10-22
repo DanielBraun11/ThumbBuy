@@ -7,9 +7,9 @@ import java.util.List;
 public class Carrito extends Herramientas {
 
     // Constructor que recibe la lista de productos en el carrito
-    public Carrito(List<String> carrito) {
+    public Carrito(List<Producto> carrito) {
         // Crear ventana para el carrito
-        JFrame carritoVentana = new JFrame("Carrito de Compras");
+        JFrame carritoVentana = new JFrame();
         carritoVentana.setSize(360, 640);
         carritoVentana.setLocationRelativeTo(null);
         carritoVentana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -21,13 +21,8 @@ public class Carrito extends Herramientas {
 
         // Añadir productos al panel del carrito
         int y = 10;
-        for (String producto : carrito) {
-            String[] datos = producto.split(";");
-            if (datos.length < 3) continue; // Asegurarse de que los datos sean válidos
-            String nombre = datos[0];
-            String precio = datos[1];
-            String rutaImagen = datos[2];
-            carritoPanel.add(crearProductoPanel(nombre, precio, rutaImagen, 10, y));
+        for (Producto producto : carrito) {
+            carritoPanel.add(crearProductoPanel(producto.getNombre(), producto.getPrecio(), producto.getRutaImagen(), 10, y));
             y += 130; // Ajustar la posición para el siguiente producto
         }
 
@@ -44,6 +39,7 @@ public class Carrito extends Herramientas {
         JButton volverButton = crearBotones();
         volverButton.setText("Volver");
         volverButton.setBounds(270, 5, 90, 30);
+
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,6 +66,8 @@ public class Carrito extends Herramientas {
         JPanel productoPanel = new JPanel();
         productoPanel.setLayout(null);
         productoPanel.setBounds(x, y, 340, 120);
+        productoPanel.setBackground(Color.PINK);
+        productoPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         // Imagen del producto redimensionada
         JLabel imagenLabel = new JLabel();
@@ -95,4 +93,3 @@ public class Carrito extends Herramientas {
         return productoPanel;
     }
 }
-

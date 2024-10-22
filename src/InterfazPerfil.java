@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class InterfazPerfil extends Herramientas {
 
-    public InterfazPerfil() {
+    public InterfazPerfil(String nombre_usuario) {
         // CREACION DE LA VENTANA
         JFrame ventanaPerfil = crearVentana();
 
@@ -15,7 +15,7 @@ public class InterfazPerfil extends Herramientas {
         ventanaPerfil.add(panelPerfil);
 
         // CREAR Y AGREGAR UNA IMAGEN EN EL ENCABEZADO
-        JLabel imagenEncabezadoPerfil = crearEtiqueta(); // Reemplaza con la ruta de tu imagen
+        JLabel imagenEncabezadoPerfil = crearEtiqueta();
         imagenEncabezadoPerfil.setIcon(new ImageIcon("Imagenes/prueba.png"));
         imagenEncabezadoPerfil.setBounds(52, 30, 400, 250);
         panelPerfil.add(imagenEncabezadoPerfil);
@@ -59,7 +59,7 @@ public class InterfazPerfil extends Herramientas {
             public void actionPerformed(ActionEvent e) {
                 ventanaPerfil.dispose();
 
-                new InterfazPrincipal("");
+
 
             }
         });

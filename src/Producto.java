@@ -1,9 +1,9 @@
 public class Producto {
+
     private String nombre;
     private String precio;
     private String rutaImagen;
 
-    // Constructor
     public Producto(String nombre, String precio, String rutaImagen) {
         this.nombre = nombre;
         this.precio = precio;
@@ -22,5 +22,6 @@ public class Producto {
     public String getRutaImagen() {
         return rutaImagen;
     }
-}
 
+
+}

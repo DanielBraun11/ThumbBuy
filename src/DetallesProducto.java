@@ -6,8 +6,8 @@ import java.util.List;
 
 public class DetallesProducto extends Herramientas {
 
-    // Constructor que recibe los detalles del producto y el carrito
-    public DetallesProducto(String nombre, String precio, String rutaImagen, List<String> carrito) {
+    // Constructor que recibe el producto y el carrito
+    public DetallesProducto(Producto producto, List<Producto> carrito) {
         // Crear ventana
         JFrame ventanaDetalles = crearVentana();
         JPanel panelDetalles = crearPanel();
@@ -16,7 +16,7 @@ public class DetallesProducto extends Herramientas {
 
         // Mostrar imagen en grande
         JLabel imagenLabel = new JLabel();
-        ImageIcon imagenIcon = new ImageIcon(rutaImagen);
+        ImageIcon imagenIcon = new ImageIcon(producto.getRutaImagen());
         Image imagen = imagenIcon.getImage();
         Image imagenEscalada = imagen.getScaledInstance(200, 200, Image.SCALE_SMOOTH); // Imagen en grande
         imagenLabel.setIcon(new ImageIcon(imagenEscalada));
@@ -25,17 +25,17 @@ public class DetallesProducto extends Herramientas {
 
         // Mostrar nombre del producto
         JLabel nombreLabel = crearEtiqueta();
-        nombreLabel.setText(nombre);
+        nombreLabel.setText(producto.getNombre());
         nombreLabel.setBounds(80, 250, 200, 30);
         panelDetalles.add(nombreLabel);
 
         // Mostrar precio del producto
         JLabel precioLabel = crearEtiqueta();
-        precioLabel.setText(precio);
+        precioLabel.setText(producto.getPrecio());
         precioLabel.setBounds(80, 290, 200, 30);
         panelDetalles.add(precioLabel);
 
-        // Crear panel desplegable para seleccionar talla
+        // Crear panel desplegable para seleccionar la talla
         String[] tallas = {"S", "M", "L", "XL"};
         JComboBox<String> tallasComboBox = new JComboBox<>(tallas);
         tallasComboBox.setBounds(80, 340, 200, 30);
@@ -50,24 +50,19 @@ public class DetallesProducto extends Herramientas {
         anadirCarritoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtener la talla seleccionada
                 String tallaSeleccionada = (String) tallasComboBox.getSelectedItem();
-
-                // Formato: nombre;precio;rutaImagen;talla
-                String producto = nombre + ";" + precio + ";" + rutaImagen + ";" + tallaSeleccionada;
-
+                // Se puede incluir la talla seleccionada en el objeto producto si es necesario
                 carrito.add(producto);  // Añadir el producto al carrito
                 JOptionPane.showMessageDialog(ventanaDetalles, "Producto añadido al carrito");
             }
         });
-
 
         // Botón para cerrar solo la ventana de detalles
         JButton cerrarButton = new JButton("Cerrar");
         cerrarButton.setBounds(80, 450, 200, 40);
         panelDetalles.add(cerrarButton);
 
-        // Acción para cerrar la ventana de detalles sin cerrar la principal
+        // Acción para cerrar la ventana de detalles SIN cerrar la principal
         cerrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,4 +75,3 @@ public class DetallesProducto extends Herramientas {
         ventanaDetalles.setVisible(true);
     }
 }
-
