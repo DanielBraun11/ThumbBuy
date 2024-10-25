@@ -14,7 +14,7 @@ public class InterfazRegistro extends Herramientas {
         ventanaRegistro.add(panelRegistro);
 
         // CREAR Y AGREGAR UNA IMAGEN EN EL ENCABEZADO
-        JLabel imagenEncabezado = crearEtiqueta(); // Reemplaza con la ruta de tu imagen
+        JLabel imagenEncabezado = crearEtiqueta();
         imagenEncabezado.setIcon(new ImageIcon("Imagenes/Logo.png"));
         imagenEncabezado.setBounds(70, 0, 400, 250);
         panelRegistro.add(imagenEncabezado);

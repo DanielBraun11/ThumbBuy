@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,14 +21,15 @@ public class Carrito extends Herramientas {
         carritoPanel.setBackground(Color.PINK);
 
         // Añadir productos al panel del carrito
-        int y = 10;
+        int y = 50;
         for (Producto producto : carrito) {
             carritoPanel.add(crearProductoPanel(producto.getNombre(), producto.getPrecio(), producto.getRutaImagen(), 10, y));
             y += 130; // Ajustar la posición para el siguiente producto
         }
 
         // Establecer tamaño preferido para el panel
-        carritoPanel.setPreferredSize(new Dimension(340, y + 10)); // Ajustar el tamaño del panel
+        carritoPanel.setPreferredSize(new Dimension(340, y + 10));
+
 
         // Crear un JScrollPane para manejar el desplazamiento
         JScrollPane scrollPane = new JScrollPane(carritoPanel);
@@ -49,10 +51,32 @@ public class Carrito extends Herramientas {
 
         // Crear un panel para la parte superior con el botón de volver
         JPanel topPanel = new JPanel(null);
-        topPanel.setBounds(0, 0, 360, 40);
+        topPanel.setBounds(0, 0, 360, 90);
         topPanel.setBackground(Color.PINK);
         topPanel.setLayout(null);
         topPanel.add(volverButton);
+        //topPanel.setBorder(LineBorder.createBlackLineBorder());
+
+        //Imagen Frame Logo
+        JLabel FrameLogo = crearEtiqueta();
+        FrameLogo.setBounds(5, 5, 240, 40);
+
+        ImageIcon iconoFrameLogo = new ImageIcon("Imagenes/Frame Logo.png");
+        Image imagenFrameLogo = iconoFrameLogo.getImage();
+        Image imagenFrameLogoEscalada = imagenFrameLogo.getScaledInstance(240, 50, Image.SCALE_SMOOTH);
+        FrameLogo.setIcon(new ImageIcon(imagenFrameLogoEscalada));
+
+        topPanel.add(FrameLogo);
+
+        // BOTÓN PAGAR
+        JButton botonPagar = new JButton("Pagar");
+        botonPagar.setBounds(0, 50, 120, 30);
+        topPanel.add(botonPagar);
+
+        botonPagar.addActionListener(e -> {
+            carritoVentana.dispose();
+            new InterfazPago();
+        });
 
         // Ajustar el layout de la ventana
         carritoVentana.setLayout(null);
