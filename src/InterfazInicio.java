@@ -126,17 +126,20 @@ public class InterfazInicio extends Herramientas {
         iniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Verificar si los términos y condiciones han sido aceptados
                 if (!terminosCheck.isSelected()) {
-                    // Mostrar un mensaje de advertencia si no se han aceptado
                     JOptionPane.showMessageDialog(ventanaInicio, "Acepte los términos y condiciones", "Advertencia", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    // Si se aceptaron los términos, proceder con el inicio de sesión
-                    ventanaInicio.dispose();
-                    InterfazPrincipal principal = new InterfazPrincipal("");
+                    String nombreUsuario = nombre.getText();
+                    String contraseniaUsuario = new String(contrasenia.getPassword());
+
+                    ConexionBBDD conexion = new ConexionBBDD();
+                    if (conexion.verificarUsuario(nombreUsuario, contraseniaUsuario)) {
+                        new InterfazPrincipal("");
+                    }
                 }
             }
         });
+
 
 
         // DAR VISIBILIDAD A LA VENTANA

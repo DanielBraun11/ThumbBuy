@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.*;
 
 public class ConexionBBDD {
@@ -13,7 +14,7 @@ public class ConexionBBDD {
 
             // Establecer la conexión
             connection = DriverManager.getConnection(url, usuario, contrasenia);
-            System.out.println("Conexión exitosa a la base de datos.");
+            //System.out.println("Conexión exitosa a la base de datos.");         //ACTIVAR ANTES DE PRESENTAR POR SI ACASO!!!!
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error al conectar a la base de datos.");
@@ -23,7 +24,7 @@ public class ConexionBBDD {
     // Método para verificar si el usuario y la contraseña están registrados
     public boolean verificarUsuario(String nombre, String contrasenia) {
         boolean usuarioRegistrado = false;
-        String consultaSQL = "SELECT * FROM datosusuarios WHERE nombre = ? AND contraseña = ?";
+        String consultaSQL = "SELECT * FROM datosusuarios WHERE nombre_usuario = ? AND contraseña = ?";
 
         try {
             preparedStatement = connection.prepareStatement(consultaSQL);
@@ -35,6 +36,8 @@ public class ConexionBBDD {
             // Si hay un resultado, significa que el usuario está registrado
             if (resultado.next()) {
                 usuarioRegistrado = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,8 +55,8 @@ public class ConexionBBDD {
     }
 
     public void registrarUsuario(String nombre, String contrasenia, String correo, String telefono) {
-        String consultaVerificacion = "SELECT * FROM datosusuarios WHERE nombre = ?";
-        String consultaSQL = "INSERT INTO datosusuarios (nombre, contraseña, correo, telefono) VALUES (?, ?, ?, ?)";
+        String consultaVerificacion = "SELECT * FROM datosusuarios WHERE nombre_usuario = ?";
+        String consultaSQL = "INSERT INTO datosusuarios (nombre_usuario, contraseña, correo, telefono) VALUES (?, ?, ?, ?)";
 
         try {
             // Verificar si el nombre de usuario ya existe
@@ -62,7 +65,7 @@ public class ConexionBBDD {
             ResultSet resultado = preparedStatement.executeQuery();
 
             if (resultado.next()) {
-                System.out.println("Error: El nombre de usuario ya está en uso.");
+                JOptionPane.showMessageDialog(null, "Error: El nombre de usuario ya está en uso.");
             } else {
                 // Si no existe, registrar al usuario
                 preparedStatement = connection.prepareStatement(consultaSQL);
@@ -72,11 +75,12 @@ public class ConexionBBDD {
                 preparedStatement.setString(4, telefono);
 
                 preparedStatement.executeUpdate();
-                System.out.println("Usuario registrado correctamente.");
+                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente.");
+                new InterfazPrincipal("");
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Error al registrar el usuario.");
+            JOptionPane.showMessageDialog(null, "Error al registrar el usuario.");
         } finally {
             // Cerrar recursos
             try {
@@ -87,22 +91,4 @@ public class ConexionBBDD {
             }
         }
     }
-
-
-
-    public static void main(String[] args) {
-        ConexionBBDD conexion = new ConexionBBDD();
-
-        // Ejemplo de verificación
-        String nombre = "daniel";  // reemplaza con los valores que quieras verificar
-        String contrasenia = "4321";
-
-        boolean registrado = conexion.verificarUsuario(nombre, contrasenia);
-        if (registrado) {
-            System.out.println("Usuario y contraseña válidos.");
-        } else {
-            System.out.println("Usuario o contraseña incorrectos.");
-        }
-    }
 }
-

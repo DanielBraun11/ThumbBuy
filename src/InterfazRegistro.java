@@ -19,10 +19,9 @@ public class InterfazRegistro extends Herramientas {
         imagenEncabezado.setBounds(70, 0, 400, 250);
         panelRegistro.add(imagenEncabezado);
 
-
         // TEXTO BIENVENIDA
         JLabel bienvenidaEtiqueta = new JLabel("<html><div style='text-align: center;'>¡Bienvenido a nuestra<br>comunidad!</div></html>");
-        bienvenidaEtiqueta.setBounds(40, 250, 280, 60); // Ajusta la posición para dejar espacio
+        bienvenidaEtiqueta.setBounds(40, 250, 280, 60);
         bienvenidaEtiqueta.setFont(new Font("Arial", Font.BOLD, 18));
         bienvenidaEtiqueta.setHorizontalAlignment(SwingConstants.CENTER);
         bienvenidaEtiqueta.setForeground(Color.BLACK);
@@ -35,10 +34,10 @@ public class InterfazRegistro extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (opacity < 1f) {
-                    opacity += 0.05f; // Incrementar opacidad
+                    opacity += 0.05f;
                     bienvenidaEtiqueta.setForeground(new Color(0, 0, 0, (int)(opacity * 255)));
                 } else {
-                    ((Timer)e.getSource()).stop(); // Detener el temporizador
+                    ((Timer)e.getSource()).stop();
                 }
             }
         });
@@ -56,7 +55,6 @@ public class InterfazRegistro extends Herramientas {
         nombre.setBounds(40, 350, 280, 25);
         panelRegistro.add(nombre);
 
-
         // CONTRASEÑA
         JLabel contraseniaEtiqueta = crearEtiqueta();
         contraseniaEtiqueta.setText("CONTRASEÑA: ");
@@ -66,7 +64,6 @@ public class InterfazRegistro extends Herramientas {
         JTextArea contrasenia = crearAreaTexto();
         contrasenia.setBounds(40, 400, 280, 25);
         panelRegistro.add(contrasenia);
-
 
         // CORREO
         JLabel correoEtiqueta = crearEtiqueta();
@@ -78,7 +75,6 @@ public class InterfazRegistro extends Herramientas {
         correo.setBounds(40, 450, 280, 25);
         panelRegistro.add(correo);
 
-
         // TELEFONO
         JLabel telefonoEtiqueta = crearEtiqueta();
         telefonoEtiqueta.setText("TELEFONO: ");
@@ -88,7 +84,6 @@ public class InterfazRegistro extends Herramientas {
         JTextArea telefono = crearAreaTexto();
         telefono.setBounds(40, 500, 280, 25);
         panelRegistro.add(telefono);
-
 
         // CREACION BOTONES DE INICIO DE SESION Y REGISTRO
         JButton iniciarSesion = crearBotones();
@@ -111,26 +106,17 @@ public class InterfazRegistro extends Herramientas {
                 // Llama al método para registrar el usuario
                 conexion.registrarUsuario(nombre.getText(), contrasenia.getText(), correo.getText(), telefono.getText());
 
-                // Mensaje de confirmación
-                JOptionPane.showMessageDialog(null, "Usuario registrado correctamente.");
-                ventanaRegistro.dispose();
-
-                new InterfazPrincipal("");  // Redirige a la interfaz principal
             }
         });
-
 
         // CREACION DEL ACTION LISTENER DEL BOTON REGISTRO(RECHAZAR)
         registrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventanaRegistro.dispose();
-
                 new InterfazInicio();
-
             }
         });
-
 
         // DAR VISIBILIDAD A LA VENTANA
         ventanaRegistro.setVisible(true);
