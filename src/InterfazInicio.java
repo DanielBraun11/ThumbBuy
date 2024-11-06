@@ -48,8 +48,8 @@ public class InterfazInicio extends Herramientas {
 
         //NOMBRE
         JLabel nombreEtiqueta = crearEtiqueta();
-        nombreEtiqueta.setText("NOMBRE: ");
-        nombreEtiqueta.setBounds(40, 290, 100, 25);
+        nombreEtiqueta.setText("NOMBRE DE USUARIO: ");
+        nombreEtiqueta.setBounds(40, 290, 150, 25);
         panelInicial.add(nombreEtiqueta);
 
         JTextArea nombre = crearAreaTexto();
@@ -134,7 +134,8 @@ public class InterfazInicio extends Herramientas {
 
                     ConexionBBDD conexion = new ConexionBBDD();
                     if (conexion.verificarUsuario(nombreUsuario, contraseniaUsuario)) {
-                        new InterfazPrincipal("");
+                        ventanaInicio.dispose();
+                        new InterfazPrincipal(nombre.getText());
                     }
                 }
             }

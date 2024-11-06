@@ -79,7 +79,8 @@ public class InterfazPrincipal extends Herramientas {
         perfilButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new InterfazPerfil(""); // Cambia a la clase que maneja la interfaz de perfil
+
+                new InterfazPerfil(nombre_usuario); // Cambia a la clase que maneja la interfaz de perfil
             }
         });
 

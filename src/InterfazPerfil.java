@@ -6,83 +6,79 @@ import java.awt.event.ActionListener;
 public class InterfazPerfil extends Herramientas {
 
     public InterfazPerfil(String nombre_usuario) {
-        // CREACION DE LA VENTANA
         JFrame ventanaPerfil = crearVentana();
-
-        // CREACION PANEL DE INICIO
         JPanel panelPerfil = crearPanel();
         panelPerfil.setBackground(Color.PINK);
         ventanaPerfil.add(panelPerfil);
 
-        // CREAR Y AGREGAR UNA IMAGEN EN EL ENCABEZADO
         JLabel imagenEncabezadoPerfil = crearEtiqueta();
         imagenEncabezadoPerfil.setIcon(new ImageIcon("Imagenes/prueba.png"));
         imagenEncabezadoPerfil.setBounds(52, 30, 400, 250);
         panelPerfil.add(imagenEncabezadoPerfil);
 
+        ConexionBBDD conexion = new ConexionBBDD();
+        String[] datosUsuario = conexion.obtenerDatosUsuario(nombre_usuario);
+        conexion.cerrarConexion();
 
-        //MOSTRAR LOS DATOS DEL PERFIL
+        // Verifica si los datos del usuario fueron recuperados
+        if (datosUsuario[0] == null) {
+            JOptionPane.showMessageDialog(null, "Error: No se encontraron datos para el usuario.");
+            return;
+        }
 
-        //NOMBRE
+        // Mostrar los datos del perfil
         JLabel nombreEtiqueta = crearEtiqueta();
         nombreEtiqueta.setText("NOMBRE: ");
         nombreEtiqueta.setBounds(40, 330, 100, 25);
         panelPerfil.add(nombreEtiqueta);
 
-        //CORREO
+        JLabel nombreEtiquetaDato = crearEtiqueta();
+        nombreEtiquetaDato.setText(datosUsuario[0]);
+        nombreEtiquetaDato.setBounds(150, 330, 200, 25);
+        panelPerfil.add(nombreEtiquetaDato);
+
         JLabel correoEtiqueta = crearEtiqueta();
         correoEtiqueta.setText("CORREO: ");
         correoEtiqueta.setBounds(40, 380, 100, 25);
         panelPerfil.add(correoEtiqueta);
 
-        //TELEFONO
+        JLabel correoEtiquetaDato = crearEtiqueta();
+        correoEtiquetaDato.setText(datosUsuario[1]);
+        correoEtiquetaDato.setBounds(150, 380, 200, 25);
+        panelPerfil.add(correoEtiquetaDato);
+
         JLabel telefonoEtiqueta = crearEtiqueta();
         telefonoEtiqueta.setText("TELEFONO: ");
         telefonoEtiqueta.setBounds(40, 430, 100, 25);
         panelPerfil.add(telefonoEtiqueta);
 
-        //CONTRASEÑA
+        JLabel telefonoEtiquetaDato = crearEtiqueta();
+        telefonoEtiquetaDato.setText(datosUsuario[2]);
+        telefonoEtiquetaDato.setBounds(150, 430, 200, 25);
+        panelPerfil.add(telefonoEtiquetaDato);
+
         JLabel contraseniaEtiqueta = crearEtiqueta();
         contraseniaEtiqueta.setText("CONTRASEÑA: ");
         contraseniaEtiqueta.setBounds(40, 480, 100, 25);
         panelPerfil.add(contraseniaEtiqueta);
 
-        //BOTÓN PARA VOLVER AL MENU PRINCIPAL
+        JLabel contraseniaEtiquetaDato = crearEtiqueta();
+        contraseniaEtiquetaDato.setText(datosUsuario[3]);
+        contraseniaEtiquetaDato.setBounds(150, 480, 200, 25);
+        panelPerfil.add(contraseniaEtiquetaDato);
+
         JButton volver = crearBotones();
         volver.setBounds(180, 550, 120, 30);
         volver.setText("Volver");
         panelPerfil.add(volver);
 
-        // CREACION DEL ACTION LISTENER DEL BOTON VOLVER(VOLVER AL MENU PRINCIPAL)
         volver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventanaPerfil.dispose();
-
-
-
             }
         });
 
-        //---------------------------------------------------------------------------------
-        //OBTENER Y MOSTRAR LOS DATOS - los recojo de la clase InterfazRegistro / BBDD
-
-        //NOMBRE
-        JLabel nombreEtiquetaDato = crearEtiqueta();
-        nombreEtiquetaDato.setText("");
-        nombreEtiquetaDato.setBounds(40, 330, 100, 25);
-        panelPerfil.add(nombreEtiquetaDato);
-
-
-
-
-
-
-        // DAR VISIBILIDAD A LA VENTANA
         ventanaPerfil.setVisible(true);
     }
-
 }
-
-
-

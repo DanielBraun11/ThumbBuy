@@ -47,8 +47,8 @@ public class InterfazRegistro extends Herramientas {
 
         // NOMBRE
         JLabel nombreEtiqueta = crearEtiqueta();
-        nombreEtiqueta.setText("NOMBRE: ");
-        nombreEtiqueta.setBounds(40, 330, 100, 25);
+        nombreEtiqueta.setText("NOMBRE DE USUARIO: ");
+        nombreEtiqueta.setBounds(40, 330, 150, 25);
         panelRegistro.add(nombreEtiqueta);
 
         JTextArea nombre = crearAreaTexto();
@@ -104,8 +104,10 @@ public class InterfazRegistro extends Herramientas {
                 ConexionBBDD conexion = new ConexionBBDD();
 
                 // Llama al método para registrar el usuario
-                conexion.registrarUsuario(nombre.getText(), contrasenia.getText(), correo.getText(), telefono.getText());
-
+                if(conexion.registrarUsuario(nombre.getText(), contrasenia.getText(), correo.getText(), telefono.getText())){
+                    ventanaRegistro.dispose();
+                    new InterfazPrincipal(nombre.getText());
+                }
             }
         });
 
