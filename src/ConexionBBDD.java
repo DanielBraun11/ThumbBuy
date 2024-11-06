@@ -66,6 +66,22 @@ public class ConexionBBDD {
         return datosUsuario;
     }
 
+    public boolean nombreUsuarioExiste(String nombreUsuario) {
+        String consultaSQL = "SELECT COUNT(*) FROM datosusuarios WHERE nombre_usuario = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(consultaSQL)) {
+            preparedStatement.setString(1, nombreUsuario);
+            ResultSet resultado = preparedStatement.executeQuery();
+            if (resultado.next()) {
+                return resultado.getInt(1) > 0; // Si el contador es mayor que 0, el nombre existe
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // Si no se encuentra ningún resultado, el nombre no existe
+    }
+
+
+
     public void cerrarConexion() {
         try {
             if (connection != null && !connection.isClosed()) {

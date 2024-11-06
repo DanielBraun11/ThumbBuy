@@ -37,7 +37,7 @@ public class InterfazRegistro extends Herramientas {
                     opacity += 0.05f;
                     bienvenidaEtiqueta.setForeground(new Color(0, 0, 0, (int)(opacity * 255)));
                 } else {
-                    ((Timer)e.getSource()).stop();
+                    ((Timer) e.getSource()).stop();
                 }
             }
         });
@@ -96,22 +96,31 @@ public class InterfazRegistro extends Herramientas {
         registrarse.setText("Rechazar");
         panelRegistro.add(registrarse);
 
-        // CREACION DEL ACTION LISTENER DEL BOTON REGISTRO(ACEPTAR)
+        // CREACION DEL ACTION LISTENER DEL BOTON REGISTRO (ACEPTAR)
         iniciarSesion.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Crea una instancia de la conexión
-                ConexionBBDD conexion = new ConexionBBDD();
-
-                // Llama al método para registrar el usuario
-                if(conexion.registrarUsuario(nombre.getText(), contrasenia.getText(), correo.getText(), telefono.getText())){
-                    ventanaRegistro.dispose();
-                    new InterfazPrincipal(nombre.getText());
+                // Verificar si algún campo está vacío
+                if (nombre.getText().trim().isEmpty() || contrasenia.getText().trim().isEmpty() ||
+                        correo.getText().trim().isEmpty() || telefono.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(ventanaRegistro, "Todos los campos son obligatorios", "Error en el registro", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    // Crea una instancia de la conexión y verifica si el usuario ya existe
+                    ConexionBBDD conexion = new ConexionBBDD();
+                    if (conexion.nombreUsuarioExiste(nombre.getText())) {
+                        JOptionPane.showMessageDialog(ventanaRegistro, "El nombre de usuario ya está en uso", "Nombre en uso", JOptionPane.WARNING_MESSAGE);
+                    } else if (conexion.registrarUsuario(nombre.getText(), contrasenia.getText(), correo.getText(), telefono.getText())) {
+                        ventanaRegistro.dispose();
+                        new InterfazPrincipal(nombre.getText());
+                    } else {
+                        JOptionPane.showMessageDialog(ventanaRegistro, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
 
-        // CREACION DEL ACTION LISTENER DEL BOTON REGISTRO(RECHAZAR)
+
+        // CREACION DEL ACTION LISTENER DEL BOTON REGISTRO (RECHAZAR)
         registrarse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
