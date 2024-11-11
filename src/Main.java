@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class Main{
     public static void main(String[] args) {
-        InterfazInicio inicio = new InterfazInicio();
+        //InterfazInicio inicio = new InterfazInicio();
 
         //InterfazRegistro registro = new InterfazRegistro();
 
@@ -12,7 +12,7 @@ public class Main{
 
 
 
-        //InterfazPago pago = new InterfazPago();
+        InterfazPago pago = new InterfazPago();
 
 
     }

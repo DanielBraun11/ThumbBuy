@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.YearMonth;
 import java.util.Calendar;
 
@@ -50,6 +52,26 @@ public class InterfazPago extends Herramientas {
         JTextArea numeroDeTarjeta = crearAreaTexto();
         numeroDeTarjeta.setBounds(40, 335, 280, 25);
         panelPago.add(numeroDeTarjeta);
+
+
+        // Añadir un KeyListener para formatear el número de tarjeta en grupos de 4
+        numeroDeTarjeta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String texto = numeroDeTarjeta.getText().replaceAll("[^0-9]", ""); // Eliminar todo lo que no sea número
+                if (texto.length() > 0) {
+                    // Formatear el número de tarjeta en grupos de 4
+                    StringBuilder formateado = new StringBuilder();
+                    for (int i = 0; i < texto.length(); i++) {
+                        if (i > 0 && i % 4 == 0) {
+                            formateado.append(" "); // Añadir espacio cada 4 dígitos
+                        }
+                        formateado.append(texto.charAt(i));
+                    }
+                    numeroDeTarjeta.setText(formateado.toString()); // Actualizar el campo de texto
+                }
+            }
+        });
 
         // FECHA DE CADUCIDAD
         JLabel fechaCaducidad = crearEtiqueta();

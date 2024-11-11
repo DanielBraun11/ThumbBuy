@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Herramientas extends ConexionBBDD {
-    //METODO PARA CREAR VENTANAS
+    // MÉTODO PARA CREAR VENTANAS
     public JFrame crearVentana(){
         JFrame ventana = new JFrame();
         ventana.setSize(360, 640);
@@ -14,20 +14,20 @@ public class Herramientas extends ConexionBBDD {
         return ventana;
     }
 
-    // Método para crear el panel principal
+    // MÉTODO PARA CREAR EL PANEL PRINCIPAL
     public JPanel crearPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(null);  // Importante para usar setBounds
         return panel;
     }
 
-    // Método para crear etiquetas (logo)
+    // MÉTODO PARA CREAR ETIQUETAS (logo u otros)
     public JLabel crearEtiqueta() {
         JLabel etiqueta = new JLabel();
         return etiqueta;
     }
 
-    // Método para crear áreas de texto
+    // MÉTODO PARA CREAR ÁREAS DE TEXTO
     public JTextArea crearAreaTexto() {
         JTextArea areaTexto = new JTextArea();
         areaTexto.setBackground(Color.WHITE);  // Color de fondo del área de texto
@@ -35,12 +35,19 @@ public class Herramientas extends ConexionBBDD {
         return areaTexto;
     }
 
-    //Método para crear botones
-    public JButton crearBotones(){
+    // MÉTODO PARA CREAR CAMPOS DE TEXTO (JTextField)
+    public JTextField crearCampoTexto() {
+        JTextField campoTexto = new JTextField();
+        campoTexto.setBackground(Color.WHITE);  // Fondo blanco para el campo de texto
+        campoTexto.setBorder(BorderFactory.createLineBorder(Color.BLACK));  // Borde negro
+        return campoTexto;
+    }
+
+    // MÉTODO PARA CREAR BOTONES
+    public JButton crearBotones() {
         JButton boton = new JButton();
         boton.setEnabled(true);
         return boton;
     }
-
 
 }
