@@ -74,7 +74,6 @@ public class InterfazPago extends Herramientas {
             }
         });
 
-
         // FECHA DE CADUCIDAD
         JLabel fechaCaducidad = crearEtiqueta();
         fechaCaducidad.setText("FECHA DE CADUCIDAD (MM/AA): ");
@@ -106,7 +105,7 @@ public class InterfazPago extends Herramientas {
         codigo.setBounds(265, 395, 50, 25);
         panelPago.add(codigo);
 
-        // BOTÓN PAGO
+        // BOTÓN PAGAR
         JButton botonPago = new JButton("Pagar");
         botonPago.setBounds(40, 450, 120, 30);
         panelPago.add(botonPago);

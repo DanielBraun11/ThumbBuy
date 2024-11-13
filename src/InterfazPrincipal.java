@@ -26,7 +26,14 @@ public class InterfazPrincipal extends Herramientas {
                 new Producto("Camiseta del Barça", "15.99€", "Imagenes/camisetaBarca.jpeg"),
                 new Producto("Camiseta del Atleti", "29.99€", "Imagenes/camisetaAtleti.jpg"),
                 new Producto("Pantalon Adidas", "9.99€", "Imagenes/pantalonAdidasNegro.jpg"),
-                new Producto("Zapatos Nike", "39.99€", "Imagenes/zapatillasNikeNegras.jpg")
+                new Producto("Abrigo Mujer", "39.99€", "Imagenes/abrigo.jpg"),
+                new Producto("Abrigo Hombre", "39.99€", "Imagenes/abrigoNegro.jpg"),
+                new Producto("Camiseta Azul Marino", "9.99€", "Imagenes/camisetaAzulMarino.jpg"),
+                new Producto("Camiseta Gris", "9.99€", "Imagenes/camisetaGris.jpg"),
+                new Producto("Chaqueta Hombre", "20.00€", "Imagenes/chaquetaHombre.jpg"),
+                new Producto("Jersey Navidad", "24.50€", "Imagenes/jerseyNavidad.jpg"),
+                new Producto("Vaqueros Hombre", "21.30€", "Imagenes/vaquerosHombre.jpg"),
+                new Producto("Vaqueros Mujer", "21.30€", "Imagenes/vaquerosMujer.jpg")
         };
 
         // Añadir productos a la interfaz
@@ -39,7 +46,7 @@ public class InterfazPrincipal extends Herramientas {
         JScrollPane scrollPane = new JScrollPane(panelPrincipal);
         scrollPane.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        panelPrincipal.setPreferredSize(new Dimension(360, 800));
+        panelPrincipal.setPreferredSize(new Dimension(360, 2000));
 
         //Imagen Frame Logo
         JLabel FrameLogo = crearEtiqueta();
