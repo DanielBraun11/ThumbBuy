@@ -54,7 +54,7 @@ public class InterfazPago extends Herramientas {
         numeroDeTarjeta.setBounds(40, 335, 280, 25);
         panelPago.add(numeroDeTarjeta);
 
-/*
+
         // Añadir un KeyListener para formatear el número de tarjeta en grupos de 4
         numeroDeTarjeta.addKeyListener(new KeyAdapter() {
             @Override
@@ -73,7 +73,7 @@ public class InterfazPago extends Herramientas {
                 }
             }
         });
-*/
+
 
         // FECHA DE CADUCIDAD
         JLabel fechaCaducidad = crearEtiqueta();
@@ -124,7 +124,9 @@ public class InterfazPago extends Herramientas {
                 return;
             }
 
-            if (numeroCard.length() != 16 || !numeroCard.matches("\\d+")) {
+            // Verificación de 16 dígitos
+            String cardCheck = numeroDeTarjeta.getText().replaceAll(" ", ""); // Elimino los espacios para verificar solo los dígitos
+            if (cardCheck.length() != 16 || !cardCheck.matches("\\d+")) {
                 JOptionPane.showMessageDialog(null, "El número de la tarjeta debe tener 16 dígitos.");
                 return;
             }
@@ -171,7 +173,7 @@ public class InterfazPago extends Herramientas {
 
         botonCancelar.addActionListener(e -> {
             ventanaPago.dispose();
-            //new InterfazPrincipal("");
+
         });
 
 
