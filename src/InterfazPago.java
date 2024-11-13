@@ -4,9 +4,10 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.YearMonth;
 import java.util.Calendar;
+import java.util.List;
 
 public class InterfazPago extends Herramientas {
-    public InterfazPago() {
+    public InterfazPago(List<Producto> carrito) {
         // CREACION DE LA VENTANA
         JFrame ventanaPago = crearVentana();
 
@@ -53,7 +54,7 @@ public class InterfazPago extends Herramientas {
         numeroDeTarjeta.setBounds(40, 335, 280, 25);
         panelPago.add(numeroDeTarjeta);
 
-
+/*
         // Añadir un KeyListener para formatear el número de tarjeta en grupos de 4
         numeroDeTarjeta.addKeyListener(new KeyAdapter() {
             @Override
@@ -72,6 +73,7 @@ public class InterfazPago extends Herramientas {
                 }
             }
         });
+*/
 
         // FECHA DE CADUCIDAD
         JLabel fechaCaducidad = crearEtiqueta();
@@ -152,6 +154,9 @@ public class InterfazPago extends Herramientas {
                 }
 
                 JOptionPane.showMessageDialog(null, "Pago realizado con éxito.");
+                carrito.clear();
+                ventanaPago.dispose();
+
 
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Formato de fecha inválido.");
@@ -173,4 +178,8 @@ public class InterfazPago extends Herramientas {
         // Dar visibilidad a la ventana
         ventanaPago.setVisible(true);
     }
+
+    //-----------------------------------------------------------------------------------------------------------
+
+
 }

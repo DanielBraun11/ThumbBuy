@@ -75,7 +75,7 @@ public class Carrito extends Herramientas {
 
         botonPagar.addActionListener(e -> {
             carritoVentana.dispose();
-            new InterfazPago();
+            new InterfazPago(carrito);
         });
 
         // Ajustar el layout de la ventana
@@ -84,6 +84,9 @@ public class Carrito extends Herramientas {
         carritoVentana.add(scrollPane);
         carritoVentana.setVisible(true);
     }
+
+    //-------------------------------------------------------------------------------------------------------
+
 
     // Método para crear el panel de un producto con posicionamiento manual
     private JPanel crearProductoPanel(String nombre, String precio, String rutaImagen, int x, int y) {
