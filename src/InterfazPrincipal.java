@@ -42,7 +42,7 @@ public class InterfazPrincipal extends Herramientas {
             agregarProducto(panelPrincipal, producto, 10, yPos);
             yPos += 150;
         }
-
+        // Hacer el panel desplegable
         JScrollPane scrollPane = new JScrollPane(panelPrincipal);
         scrollPane.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -83,11 +83,12 @@ public class InterfazPrincipal extends Herramientas {
         perfilButton.setBounds(245, 5, 40, 40);  // Botón en la esquina superior derecha
         panelPrincipal.add(perfilButton);
 
+        //BOTÓN PARA IR A LA INTERFAZ DE PERFIL
         perfilButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new InterfazPerfil(nombre_usuario); // Cambia a la clase que maneja la interfaz de perfil
+                new InterfazPerfil(nombre_usuario);
             }
         });
 

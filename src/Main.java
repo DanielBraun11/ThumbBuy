@@ -2,17 +2,13 @@ import javax.swing.*;
 
 public class Main{
     public static void main(String[] args) {
-        //InterfazInicio inicio = new InterfazInicio();
+        new InterfazInicio();
 
-        //InterfazRegistro registro = new InterfazRegistro();
+        //new InterfazRegistro();
 
-        InterfazPrincipal principal = new InterfazPrincipal("");
+        //new InterfazPrincipal("");
 
-        //InterfazPerfil perfil = new InterfazPerfil("");
-
-
-
-
+        //new InterfazPerfil("");
 
 
     }
