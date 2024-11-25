@@ -7,6 +7,7 @@ import java.util.List;
 
 public class InterfazPrincipal extends Herramientas {
 
+    private GestorCarrito gestorCarrito;
     private List<JPanel> productoPanels;
     private List<Producto> carrito;  // Lista de productos en el carrito
     private Producto[] productos;
@@ -14,6 +15,7 @@ public class InterfazPrincipal extends Herramientas {
     public InterfazPrincipal(String nombre_usuario) {
         carrito = new ArrayList<>();
         productoPanels = new ArrayList<>();
+        gestorCarrito = new GestorCarrito();
 
         // Crear ventana y panel principal
         JFrame ventana = crearVentana();
@@ -42,7 +44,7 @@ public class InterfazPrincipal extends Herramientas {
             agregarProducto(panelPrincipal, producto, 10, yPos);
             yPos += 150;
         }
-        // Hacer el panel desplegable
+
         JScrollPane scrollPane = new JScrollPane(panelPrincipal);
         scrollPane.setBounds(0, 0, ventana.getWidth(), ventana.getHeight());
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -71,7 +73,7 @@ public class InterfazPrincipal extends Herramientas {
         carritoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Carrito(carrito); // Cambia a la clase que maneja la interfaz del carrito
+                new Carrito(gestorCarrito); // Cambia a la clase que maneja la interfaz del carrito
             }
         });
 
@@ -83,12 +85,11 @@ public class InterfazPrincipal extends Herramientas {
         perfilButton.setBounds(245, 5, 40, 40);  // Botón en la esquina superior derecha
         panelPrincipal.add(perfilButton);
 
-        //BOTÓN PARA IR A LA INTERFAZ DE PERFIL
         perfilButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new InterfazPerfil(nombre_usuario);
+                new InterfazPerfil(nombre_usuario); // Cambia a la clase que maneja la interfaz de perfil
             }
         });
 
@@ -108,7 +109,7 @@ public class InterfazPrincipal extends Herramientas {
                 String textoBusqueda = buscador.getText().trim();
                 if (!textoBusqueda.isEmpty()) {
                     List<Producto> productosFiltrados = buscarProductos(textoBusqueda);
-                    new ProductosBuscados(productosFiltrados, carrito);
+                    new ProductosBuscados(productosFiltrados, gestorCarrito);
                 }
             }
         });
@@ -168,7 +169,7 @@ public class InterfazPrincipal extends Herramientas {
         seleccionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DetallesProducto(producto, carrito);
+                new DetallesProducto(producto, gestorCarrito);
             }
         });
 

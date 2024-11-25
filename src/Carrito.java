@@ -8,7 +8,7 @@ import java.util.List;
 public class Carrito extends Herramientas {
 
     // Constructor que recibe la lista de productos en el carrito
-    public Carrito(List<Producto> carrito) {
+    public Carrito(GestorCarrito gestorCarrito) {
         // Crear ventana para el carrito
         JFrame carritoVentana = new JFrame();
         carritoVentana.setSize(360, 640);
@@ -20,9 +20,11 @@ public class Carrito extends Herramientas {
         carritoPanel.setLayout(null);
         carritoPanel.setBackground(Color.PINK);
 
+        List<Producto> productosEnCarrito = gestorCarrito.obtenerProductos();
+
         // Añadir productos al panel del carrito
         int y = 50;
-        for (Producto producto : carrito) {
+        for (Producto producto : productosEnCarrito) {
             carritoPanel.add(crearProductoPanel(producto.getNombre(), producto.getPrecio(), producto.getRutaImagen(), 10, y));
             y += 130; // Ajustar la posición para el siguiente producto
         }
@@ -75,7 +77,7 @@ public class Carrito extends Herramientas {
 
         botonPagar.addActionListener(e -> {
             carritoVentana.dispose();
-            new InterfazPago(carrito);
+            new InterfazPago(productosEnCarrito);
         });
 
         // Ajustar el layout de la ventana

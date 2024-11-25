@@ -136,6 +136,8 @@ public class InterfazInicio extends Herramientas {
                     if (conexion.verificarUsuario(nombreUsuario, contraseniaUsuario)) {
                         ventanaInicio.dispose();
                         new InterfazPrincipal(nombre.getText());
+                    }else{
+                        JOptionPane.showMessageDialog(ventanaInicio, "Usuario o contraseña no validos", "Advertencia", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }

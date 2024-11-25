@@ -7,7 +7,7 @@ import java.util.List;
 public class DetallesProducto extends Herramientas {
 
     // Constructor que recibe el producto y el carrito
-    public DetallesProducto(Producto producto, List<Producto> carrito) {
+    public DetallesProducto(Producto producto,  GestorCarrito gestorCarrito) {
         // Crear ventana
         JFrame ventanaDetalles = crearVentana();
         JPanel panelDetalles = crearPanel();
@@ -51,8 +51,8 @@ public class DetallesProducto extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tallaSeleccionada = (String) tallasComboBox.getSelectedItem();
-
-                carrito.add(producto);  // Añadir el producto al carrito
+                // Se puede incluir la talla seleccionada en el objeto producto si es necesario
+                gestorCarrito.agregarProducto(producto);  // Añadir el producto al carrito
                 JOptionPane.showMessageDialog(ventanaDetalles, "Producto añadido al carrito");
             }
         });

@@ -6,7 +6,13 @@ import java.util.List;
 
 public class ProductosBuscados extends Herramientas {
 
-    public ProductosBuscados(List<Producto> productosFiltrados, List<Producto> carrito) {
+    private GestorCarrito gestorCarrito;
+
+    public ProductosBuscados(List<Producto> productosFiltrados, GestorCarrito gestorCarrito) {
+
+        // Utilizar la instancia de GestorCarrito pasada como argumento
+        this.gestorCarrito = gestorCarrito;
+
         // Crear ventana y establecer tamaño
         JFrame ventana = new JFrame();
         ventana.setSize(360, 640);
@@ -20,7 +26,7 @@ public class ProductosBuscados extends Herramientas {
 
         int yPos = 10; // Posición inicial de los productos
         for (Producto producto : productosFiltrados) {
-            agregarProducto(panelPrincipal, producto, 10, yPos, carrito);
+            agregarProducto(panelPrincipal, producto, 10, yPos);
             yPos += 130; // Incrementar la posición para el siguiente producto
         }
 
@@ -58,12 +64,12 @@ public class ProductosBuscados extends Herramientas {
         ventana.setVisible(true);
     }
 
-    private void agregarProducto(JPanel panelPrincipal, Producto producto, int x, int y, List<Producto> carrito) {
-        JPanel productoPanel = crearProductoPanel(producto, x, y, carrito);
+    private void agregarProducto(JPanel panelPrincipal, Producto producto, int x, int y) {
+        JPanel productoPanel = crearProductoPanel(producto, x, y);
         panelPrincipal.add(productoPanel);
     }
 
-    private JPanel crearProductoPanel(Producto producto, int x, int y, List<Producto> carrito) {
+    private JPanel crearProductoPanel(Producto producto, int x, int y) {
         JPanel productoPanel = new JPanel();
         productoPanel.setLayout(null);
         productoPanel.setBounds(x, y, 340, 120);
@@ -95,7 +101,7 @@ public class ProductosBuscados extends Herramientas {
         seleccionarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new DetallesProducto(producto, carrito); // Pasar el producto completo y el carrito
+                new DetallesProducto(producto, gestorCarrito); // Pasar el producto completo y el carrito
             }
         });
 
