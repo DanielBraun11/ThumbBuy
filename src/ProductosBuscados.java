@@ -4,10 +4,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * La clase <code>ProductosBuscados</code> representa una ventana que muestra una lista de productos filtrados.
+ * Los productos se despliegan en un panel con un desplazamiento vertical, y cada uno tiene un botón "Seleccionar"
+ * que abre una nueva ventana con los detalles del producto.
+ * También incluye un botón "Volver" para cerrar la ventana y regresar a la interfaz anterior.
+ */
 public class ProductosBuscados extends Herramientas {
-
+    /**
+     * Instancia del gestor del carrito de compras.
+     */
     private GestorCarrito gestorCarrito;
 
+    /**
+     * Constructor de la clase <code>ProductosBuscados</code>.
+     *
+     * @param productosFiltrados Lista de productos que han sido filtrados para ser mostrados.
+     * @param gestorCarrito Instancia del gestor del carrito de compras.
+     */
     public ProductosBuscados(List<Producto> productosFiltrados, GestorCarrito gestorCarrito) {
 
         // Utilizar la instancia de GestorCarrito pasada como argumento
@@ -64,11 +78,27 @@ public class ProductosBuscados extends Herramientas {
         ventana.setVisible(true);
     }
 
+    /**
+     * Agrega un producto al panel principal en una posición específica.
+     *
+     * @param panelPrincipal Panel donde se agregarán los productos.
+     * @param producto El producto a agregar.
+     * @param x Posición horizontal del producto en el panel.
+     * @param y Posición vertical del producto en el panel.
+     */
     private void agregarProducto(JPanel panelPrincipal, Producto producto, int x, int y) {
         JPanel productoPanel = crearProductoPanel(producto, x, y);
         panelPrincipal.add(productoPanel);
     }
 
+    /**
+     * Crea un panel que representa visualmente un producto con su imagen, precio, nombre y un botón de selección.
+     *
+     * @param producto El producto que se representará.
+     * @param x Posición horizontal del panel en el contenedor principal.
+     * @param y Posición vertical del panel en el contenedor principal.
+     * @return El panel con la representación del producto.
+     */
     private JPanel crearProductoPanel(Producto producto, int x, int y) {
         JPanel productoPanel = new JPanel();
         productoPanel.setLayout(null);

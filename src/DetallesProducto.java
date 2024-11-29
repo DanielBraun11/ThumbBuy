@@ -4,9 +4,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Clase DetallesProducto
+ *
+ * Representa la interfaz gráfica para mostrar los detalles de un producto seleccionado.
+ * Permite a los usuarios visualizar la información del producto, seleccionar una talla
+ * y añadir el producto al carrito.
+ *
+ * Esta clase utiliza un {@link Producto} para mostrar la información y un {@link GestorCarrito}
+ * para gestionar la funcionalidad de añadir productos al carrito.
+ *
+ * @author Daniel Braun Sandino
+
+ */
+
 public class DetallesProducto extends Herramientas {
 
-    // Constructor que recibe el producto y el carrito
+    /**
+     * Constructor de la clase DetallesProducto.
+     *
+     * Crea y muestra una interfaz gráfica que contiene:
+     * - Una imagen ampliada del producto.
+     * - El nombre y precio del producto.
+     * - Un menú desplegable para seleccionar la talla.
+     * - Un botón para añadir el producto al carrito.
+     * - Un botón para cerrar la ventana de detalles.
+     *
+     * @param producto       el producto cuyas propiedades se mostrarán en la interfaz.
+     * @param gestorCarrito  el objeto que gestiona el carrito de compras y permite añadir productos.
+     */
+
     public DetallesProducto(Producto producto,  GestorCarrito gestorCarrito) {
         // Crear ventana
         JFrame ventanaDetalles = crearVentana();

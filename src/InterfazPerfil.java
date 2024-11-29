@@ -3,7 +3,30 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase InterfazPerfil
+ *
+ * Representa la interfaz de perfil de usuario en la tienda online. Esta interfaz muestra
+ * la información personal del usuario, incluyendo nombre, correo, teléfono y contraseña.
+ * Proporciona un botón para volver a la interfaz anterior.
+ *
+ * Esta clase interactúa con la base de datos para obtener los datos del usuario mediante
+ * la clase {@link ConexionBBDD}.
+ *
+ * @author Daniel Braun Sandino
+ */
 public class InterfazPerfil extends Herramientas {
+
+    /**
+     * Constructor de la clase InterfazPerfil.
+     *
+     * Crea y muestra la interfaz gráfica que contiene los datos del perfil del usuario.
+     * Recupera la información del usuario de la base de datos y la presenta en etiquetas
+     * dentro de un panel.
+     *
+     * @param nombre_usuario el nombre de usuario que se utiliza para buscar los datos
+     * en la base de datos.
+     */
 
     public InterfazPerfil(String nombre_usuario) {
         JFrame ventanaPerfil = crearVentana();

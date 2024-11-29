@@ -5,6 +5,15 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase InterfazPrincipal
+ *
+ * Representa la interfaz principal de la tienda online, donde se muestran todos los productos disponibles.
+ * Permite a los usuarios buscar productos, acceder a los detalles de cada producto, gestionar un carrito de compras
+ * y navegar al perfil del usuario.
+ *
+ */
+
 public class InterfazPrincipal extends Herramientas {
 
     private GestorCarrito gestorCarrito;
@@ -12,6 +21,13 @@ public class InterfazPrincipal extends Herramientas {
     private List<Producto> carrito;  // Lista de productos en el carrito
     private Producto[] productos;
 
+/**
+ * Constructor de la clase InterfazPrincipal.
+ * Inicializa la interfaz principal con una lista de productos, un buscador, y botones para acceder
+ * al carrito y al perfil del usuario.
+ *
+ * @param nombre_usuario el nombre del usuario que inicia la sesión.
+ */
     public InterfazPrincipal(String nombre_usuario) {
         carrito = new ArrayList<>();
         productoPanels = new ArrayList<>();
@@ -120,7 +136,12 @@ public class InterfazPrincipal extends Herramientas {
 
     //-----------------------------------------------------------------------------------
 
-    // Método que filtra los productos según el nombre
+    /**
+     * Busca productos según un texto proporcionado.
+     *
+     * @param nombre el texto que se utilizará para filtrar los productos.
+     * @return una lista de productos que coinciden con el texto de búsqueda.
+     */
     private List<Producto> buscarProductos(String nombre) {
         List<Producto> productosFiltrados = new ArrayList<>();
         for (Producto producto : productos) {
@@ -131,12 +152,30 @@ public class InterfazPrincipal extends Herramientas {
         return productosFiltrados;
     }
 
+
+    /**
+     * Agrega un producto al panel principal de la interfaz.
+     *
+     * @param panelPrincipal el panel donde se mostrará el producto.
+     * @param producto el producto que se agregará.
+     * @param x la posición x del producto en el panel.
+     * @param y la posición y del producto en el panel.
+     */
     private void agregarProducto(JPanel panelPrincipal, Producto producto, int x, int y) {
         JPanel productoPanel = crearProductoPanel(producto, x, y);
         panelPrincipal.add(productoPanel);
         productoPanels.add(productoPanel);
     }
 
+
+    /**
+     * Crea un panel gráfico para un producto.
+     *
+     * @param producto el producto para el cual se creará el panel.
+     * @param x la posición x del panel.
+     * @param y la posición y del panel.
+     * @return un JPanel que representa visualmente el producto.
+     */
     private JPanel crearProductoPanel(Producto producto, int x, int y) {
         JPanel productoPanel = new JPanel();
         productoPanel.setLayout(null);

@@ -5,9 +5,32 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * Clase Carrito
+ *
+ * Representa la interfaz gráfica del carrito de compras en la tienda online.
+ * Permite a los usuarios visualizar los productos seleccionados, volver a la
+ * interfaz principal o proceder al proceso de pago.
+ *
+ * Esta clase utiliza un {@link GestorCarrito} para obtener los productos en el carrito
+ * y mostrar su información en un diseño desplazable.
+ *
+ * @author Daniel Braun Sandino
+ */
+
 public class Carrito extends Herramientas {
 
-    // Constructor que recibe la lista de productos en el carrito
+    /**
+     * Constructor de la clase Carrito.
+     *
+     * Crea y muestra la interfaz gráfica que contiene los productos seleccionados en el carrito.
+     * Los productos se muestran con su nombre, precio e imagen. Incluye opciones para:
+     * - Volver a la interfaz anterior.
+     * - Proceder al proceso de pago.
+     *
+     * @param gestorCarrito objeto que gestiona los productos del carrito y permite obtenerlos.
+     */
+
     public Carrito(GestorCarrito gestorCarrito) {
         // Crear ventana para el carrito
         JFrame carritoVentana = new JFrame();
@@ -90,7 +113,22 @@ public class Carrito extends Herramientas {
     //-------------------------------------------------------------------------------------------------------
 
 
-    // Método para crear el panel de un producto con posicionamiento manual
+    /**
+     * Crea un panel que representa un producto en el carrito.
+     *
+     * Este método genera un panel con la información del producto, incluyendo:
+     * - Imagen redimensionada.
+     * - Nombre del producto.
+     * - Precio del producto.
+     *
+     * @param nombre     el nombre del producto.
+     * @param precio     el precio del producto.
+     * @param rutaImagen la ruta de la imagen asociada al producto.
+     * @param x          la posición X inicial del panel.
+     * @param y          la posición Y inicial del panel.
+     * @return un JPanel que contiene la información del producto.
+     */
+
     private JPanel crearProductoPanel(String nombre, String precio, String rutaImagen, int x, int y) {
         JPanel productoPanel = new JPanel();
         productoPanel.setLayout(null);

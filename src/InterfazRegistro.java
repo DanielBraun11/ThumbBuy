@@ -3,7 +3,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * La clase {@code InterfazRegistro} representa la interfaz gráfica para que los usuarios
+ * se registren en la aplicación. Incluye campos para ingresar nombre de usuario,
+ * contraseña, correo y teléfono, además de botones para aceptar o rechazar el registro.
+ *
+ * <p>Características principales:</p>
+ * <ul>
+ *     <li>Encabezado con imagen y mensaje de bienvenida con animación de "fade in".</li>
+ *     <li>Campos de entrada para los datos del usuario.</li>
+ *     <li>Validación de campos obligatorios antes de procesar el registro.</li>
+ *     <li>Conexión con la base de datos para verificar nombres de usuario duplicados.</li>
+ * </ul>
+ */
 public class InterfazRegistro extends Herramientas {
+
+    /**
+     * Constructor de la clase {@code InterfazRegistro}. Crea la ventana de registro,
+     * configura los componentes gráficos y define las acciones asociadas a los botones.
+     */
     public InterfazRegistro() {
         // CREACION DE LA VENTANA
         JFrame ventanaRegistro = crearVentana();
@@ -118,7 +136,6 @@ public class InterfazRegistro extends Herramientas {
                 }
             }
         });
-
 
         // CREACION DEL ACTION LISTENER DEL BOTON REGISTRO (RECHAZAR)
         registrarse.addActionListener(new ActionListener() {

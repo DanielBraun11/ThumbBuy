@@ -6,7 +6,22 @@ import java.time.YearMonth;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * Clase que representa la interfaz de pago de la tienda online.
+ * Esta clase gestiona la ventana donde el usuario puede ingresar los detalles de su tarjeta de crédito
+ * para realizar un pago. Incluye campos de texto para el nombre del titular, número de tarjeta,
+ * fecha de caducidad, código CVC y botones para realizar o cancelar el pago.
+ *
+ * @author Daniel Braun Sandino
+ */
 public class InterfazPago extends Herramientas {
+
+    /**
+     * Constructor que crea la ventana de pago y permite al usuario ingresar los detalles de su tarjeta de crédito
+     * y realizar el pago.
+     *
+     * @param carrito la lista de productos que el usuario ha agregado al carrito, que se vacía después del pago.
+     */
     public InterfazPago(List<Producto> carrito) {
         // CREACION DE LA VENTANA
         JFrame ventanaPago = crearVentana();
@@ -180,7 +195,7 @@ public class InterfazPago extends Herramientas {
         ventanaPago.setVisible(true);
     }
 
-    //-----------------------------------------------------------------------------------------------------------
+
 
 
 }
