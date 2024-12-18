@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  *
  * @author Daniel Braun Sandino
  */
-public class InterfazPerfil extends Herramientas {
+public class VentanaPerfil extends Herramientas {
 
     /**
      * Constructor de la clase InterfazPerfil.
@@ -28,7 +28,7 @@ public class InterfazPerfil extends Herramientas {
      * en la base de datos.
      */
 
-    public InterfazPerfil(String nombre_usuario) {
+    public VentanaPerfil(String nombre_usuario) {
         JFrame ventanaPerfil = crearVentana();
         JPanel panelPerfil = crearPanel();
         panelPerfil.setBackground(Color.PINK);

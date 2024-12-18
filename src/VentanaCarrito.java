@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +17,7 @@ import java.util.List;
  * @author Daniel Braun Sandino
  */
 
-public class Carrito extends Herramientas {
+public class VentanaCarrito extends Herramientas {
 
     /**
      * Constructor de la clase Carrito.
@@ -31,7 +30,7 @@ public class Carrito extends Herramientas {
      * @param gestorCarrito objeto que gestiona los productos del carrito y permite obtenerlos.
      */
 
-    public Carrito(GestorCarrito gestorCarrito) {
+    public VentanaCarrito(GestorCarrito gestorCarrito) {
         // Crear ventana para el carrito
         JFrame carritoVentana = new JFrame();
         carritoVentana.setSize(360, 640);
@@ -100,7 +99,7 @@ public class Carrito extends Herramientas {
 
         botonPagar.addActionListener(e -> {
             carritoVentana.dispose();
-            new InterfazPago(productosEnCarrito);
+            new VentanaPago(productosEnCarrito);
         });
 
         // Ajustar el layout de la ventana

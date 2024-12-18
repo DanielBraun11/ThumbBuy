@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  * <p>
  * Utiliza herencia de la clase {@code Herramientas} para crear componentes gráficos.
  */
-public class InterfazInicio extends Herramientas {
+public class VentanaInicio extends Herramientas {
 
     /**
      * Constructor de la clase {@code InterfazInicio}.
@@ -20,7 +20,7 @@ public class InterfazInicio extends Herramientas {
      * Inicializa y configura todos los componentes de la interfaz gráfica,
      * incluyendo etiquetas, campos de texto, botones y paneles.
      */
-    public InterfazInicio() {
+    public VentanaInicio() {
         // CREACIÓN DE LA VENTANA
         JFrame ventanaInicio = crearVentana();
 
@@ -119,7 +119,7 @@ public class InterfazInicio extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventanaInicio.dispose(); // Cierra la ventana actual
-                new InterfazRegistro(); // Abre la interfaz de registro
+                new VentanaRegistro(); // Abre la interfaz de registro
             }
         });
 
@@ -138,7 +138,7 @@ public class InterfazInicio extends Herramientas {
                     ConexionBBDD conexion = new ConexionBBDD();
                     if (conexion.verificarUsuario(nombreUsuario, contraseniaUsuario)) {
                         ventanaInicio.dispose(); // Cierra la ventana de inicio
-                        new InterfazPrincipal(nombre.getText()); // Abre la interfaz principal
+                        new VentanaPrincipal(nombre.getText()); // Abre la interfaz principal
                     } else {
                         JOptionPane.showMessageDialog(ventanaInicio, "Usuario o contraseña no válidos", "Advertencia", JOptionPane.WARNING_MESSAGE);
                     }

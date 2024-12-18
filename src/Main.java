@@ -14,18 +14,19 @@ public class Main{
      * Método principal de la aplicación.
      *
      * @param args Argumentos de línea de comandos (no utilizados en esta aplicación).
-     *             Puede ser personalizado si se requieren parámetros adicionales en el futuro.
+     * Puede ser personalizado si se requieren parámetros adicionales en el futuro.
      */
     public static void main(String[] args) {
-        new InterfazInicio();
+        new VentanaInicio();
 
         //new InterfazRegistro();
 
-        //new InterfazPrincipal("");
+        //new VentanaPrincipal("");
 
         //new InterfazPerfil("");
 
 
     }
 }
+
 

@@ -16,13 +16,13 @@ import java.awt.event.ActionListener;
  *     <li>Conexión con la base de datos para verificar nombres de usuario duplicados.</li>
  * </ul>
  */
-public class InterfazRegistro extends Herramientas {
+public class VentanaRegistro extends Herramientas {
 
     /**
      * Constructor de la clase {@code InterfazRegistro}. Crea la ventana de registro,
      * configura los componentes gráficos y define las acciones asociadas a los botones.
      */
-    public InterfazRegistro() {
+    public VentanaRegistro() {
         // CREACION DE LA VENTANA
         JFrame ventanaRegistro = crearVentana();
 
@@ -129,7 +129,7 @@ public class InterfazRegistro extends Herramientas {
                         JOptionPane.showMessageDialog(ventanaRegistro, "El nombre de usuario ya está en uso", "Nombre en uso", JOptionPane.WARNING_MESSAGE);
                     } else if (conexion.registrarUsuario(nombre.getText(), contrasenia.getText(), correo.getText(), telefono.getText())) {
                         ventanaRegistro.dispose();
-                        new InterfazPrincipal(nombre.getText());
+                        new VentanaPrincipal(nombre.getText());
                     } else {
                         JOptionPane.showMessageDialog(ventanaRegistro, "Error al registrar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -142,7 +142,7 @@ public class InterfazRegistro extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventanaRegistro.dispose();
-                new InterfazInicio();
+                new VentanaInicio();
             }
         });
 

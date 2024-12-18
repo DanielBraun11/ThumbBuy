@@ -14,7 +14,7 @@ import java.util.List;
  *
  */
 
-public class InterfazPrincipal extends Herramientas {
+public class VentanaPrincipal extends Herramientas {
 
     private GestorCarrito gestorCarrito;
     private List<JPanel> productoPanels;
@@ -28,7 +28,7 @@ public class InterfazPrincipal extends Herramientas {
  *
  * @param nombre_usuario el nombre del usuario que inicia la sesión.
  */
-    public InterfazPrincipal(String nombre_usuario) {
+    public VentanaPrincipal(String nombre_usuario) {
         carrito = new ArrayList<>();
         productoPanels = new ArrayList<>();
         gestorCarrito = new GestorCarrito();
@@ -89,7 +89,7 @@ public class InterfazPrincipal extends Herramientas {
         carritoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Carrito(gestorCarrito); // Cambia a la clase que maneja la interfaz del carrito
+                new VentanaCarrito(gestorCarrito); // Cambia a la clase que maneja la interfaz del carrito
             }
         });
 
@@ -105,7 +105,7 @@ public class InterfazPrincipal extends Herramientas {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new InterfazPerfil(nombre_usuario); // Cambia a la clase que maneja la interfaz de perfil
+                new VentanaPerfil(nombre_usuario); // Cambia a la clase que maneja la interfaz de perfil
             }
         });
 

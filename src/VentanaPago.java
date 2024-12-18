@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.YearMonth;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @author Daniel Braun Sandino
  */
-public class InterfazPago extends Herramientas {
+public class VentanaPago extends Herramientas {
 
     /**
      * Constructor que crea la ventana de pago y permite al usuario ingresar los detalles de su tarjeta de crédito
@@ -22,7 +21,7 @@ public class InterfazPago extends Herramientas {
      *
      * @param carrito la lista de productos que el usuario ha agregado al carrito, que se vacía después del pago.
      */
-    public InterfazPago(List<Producto> carrito) {
+    public VentanaPago(List<Producto> carrito) {
         // CREACION DE LA VENTANA
         JFrame ventanaPago = crearVentana();
 
