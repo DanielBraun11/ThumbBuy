@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  * Incluye campos para el ingreso del nombre de usuario y contraseña, además de opciones
  * para aceptar términos y condiciones.
  * <p>
- * Utiliza herencia de la clase {@code Herramientas} para crear componentes gráficos.
+ * Utiliza herencia de la clase {@code General.Herramientas} para crear componentes gráficos.
  */
 public class VentanaInicio extends Herramientas {
 

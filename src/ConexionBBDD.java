@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.sql.*;
 
 /**
- * La clase <code>ConexionBBDD</code> proporciona métodos para gestionar la conexión con una base de datos MySQL
+ * La clase <code>General.ConexionBBDD</code> proporciona métodos para gestionar la conexión con una base de datos MySQL
  * y realizar operaciones comunes como verificar usuarios, registrar nuevos usuarios, obtener datos y cerrar la conexión.
  */
 public class ConexionBBDD {

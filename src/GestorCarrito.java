@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * La clase <code>GestorCarrito</code> gestiona el carrito de compras, permitiendo agregar y eliminar productos,
+ * La clase <code>General.GestorCarrito</code> gestiona el carrito de compras, permitiendo agregar y eliminar productos,
  * así como obtener la lista de productos actuales y contar el número de productos en el carrito.
  */
 public class GestorCarrito {
@@ -12,7 +12,7 @@ public class GestorCarrito {
     private List<Producto> productos;
 
     /**
-     * Constructor de la clase <code>GestorCarrito</code>.
+     * Constructor de la clase <code>General.GestorCarrito</code>.
      * Inicializa la lista de productos vacía.
      */
     public GestorCarrito() {

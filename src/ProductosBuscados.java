@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
- * La clase <code>ProductosBuscados</code> representa una ventana que muestra una lista de productos filtrados.
+ * La clase <code>General.ProductosBuscados</code> representa una ventana que muestra una lista de productos filtrados.
  * Los productos se despliegan en un panel con un desplazamiento vertical, y cada uno tiene un botón "Seleccionar"
  * que abre una nueva ventana con los detalles del producto.
  * También incluye un botón "Volver" para cerrar la ventana y regresar a la interfaz anterior.
@@ -17,14 +17,14 @@ public class ProductosBuscados extends Herramientas {
     private GestorCarrito gestorCarrito;
 
     /**
-     * Constructor de la clase <code>ProductosBuscados</code>.
+     * Constructor de la clase <code>General.ProductosBuscados</code>.
      *
      * @param productosFiltrados Lista de productos que han sido filtrados para ser mostrados.
      * @param gestorCarrito Instancia del gestor del carrito de compras.
      */
     public ProductosBuscados(List<Producto> productosFiltrados, GestorCarrito gestorCarrito) {
 
-        // Utilizar la instancia de GestorCarrito pasada como argumento
+        // Utilizar la instancia de General.GestorCarrito pasada como argumento
         this.gestorCarrito = gestorCarrito;
 
         // Crear ventana y establecer tamaño
@@ -67,7 +67,7 @@ public class ProductosBuscados extends Herramientas {
         volverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ventana.dispose();  // Cierra la ventana de ProductosBuscados
+                ventana.dispose();  // Cierra la ventana de General.ProductosBuscados
             }
         });
 

@@ -1,15 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 /**
- * La clase <code>Herramientas</code> proporciona métodos reutilizables para la creación de elementos de interfaz
+ * La clase <code>General.Herramientas</code> proporciona métodos reutilizables para la creación de elementos de interfaz
  * gráfica (GUI), como ventanas, paneles, etiquetas, áreas de texto, campos de texto y botones.
- * También hereda de <code>ConexionBBDD</code>, lo que permite su integración con funcionalidades relacionadas
+ * También hereda de <code>General.ConexionBBDD</code>, lo que permite su integración con funcionalidades relacionadas
  * con bases de datos.
  */
-public class Herramientas extends ConexionBBDD {
+public class Herramientas  {
     /**
      * Crea y configura una ventana estándar con un tamaño predefinido de 360x640 píxeles.
      *

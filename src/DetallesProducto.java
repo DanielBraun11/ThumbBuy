@@ -2,10 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
- * Clase DetallesProducto
+ * Clase General.DetallesProducto
  *
  * Representa la interfaz gráfica para mostrar los detalles de un producto seleccionado.
  * Permite a los usuarios visualizar la información del producto, seleccionar una talla
@@ -21,7 +20,7 @@ import java.util.List;
 public class DetallesProducto extends Herramientas {
 
     /**
-     * Constructor de la clase DetallesProducto.
+     * Constructor de la clase General.DetallesProducto.
      *
      * Crea y muestra una interfaz gráfica que contiene:
      * - Una imagen ampliada del producto.
@@ -34,7 +33,7 @@ public class DetallesProducto extends Herramientas {
      * @param gestorCarrito  el objeto que gestiona el carrito de compras y permite añadir productos.
      */
 
-    public DetallesProducto(Producto producto,  GestorCarrito gestorCarrito) {
+    public DetallesProducto(Producto producto, GestorCarrito gestorCarrito) {
         // Crear ventana
         JFrame ventanaDetalles = crearVentana();
         JPanel panelDetalles = crearPanel();
@@ -80,7 +79,7 @@ public class DetallesProducto extends Herramientas {
                 String tallaSeleccionada = (String) tallasComboBox.getSelectedItem();
                 // Se puede incluir la talla seleccionada en el objeto producto si es necesario
                 gestorCarrito.agregarProducto(producto);  // Añadir el producto al carrito
-                JOptionPane.showMessageDialog(ventanaDetalles, "Producto añadido al carrito");
+                JOptionPane.showMessageDialog(ventanaDetalles, "General.Producto añadido al carrito");
             }
         });
 

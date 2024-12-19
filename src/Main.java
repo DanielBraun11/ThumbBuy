@@ -1,5 +1,5 @@
 /**
- * Clase <code>Main</code>: Punto de entrada de la aplicación.
+ * Clase <code>General.Main</code>: Punto de entrada de la aplicación.
  *
  * Esta clase inicializa la interfaz gráfica principal de la aplicación llamando
  * a la clase correspondiente. Actualmente, inicia la interfaz de inicio
@@ -21,7 +21,7 @@ public class Main{
 
         //new InterfazRegistro();
 
-        //new VentanaPrincipal("");
+        //new General.VentanaPrincipal("");
 
         //new InterfazPerfil("");
 

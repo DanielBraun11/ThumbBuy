@@ -1,5 +1,5 @@
 /**
- * Clase Producto
+ * Clase General.Producto
  *
  * Representa un producto en la tienda online, con información sobre su nombre,
  * precio y la ruta de la imagen asociada.
